@@ -1,0 +1,62 @@
+version: '3.2'
+
+services:
+  database:
+    image: mysql:5.7
+    environment:
+      TZ: Europe/Rome
+      MYSQL_ROOT_PASSWORD: restchain
+      MYSQL_DATABASE: restchain
+      MYSQL_USER: restchain
+      MYSQL_PASSWORD: restchain
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./database:/var/lib/mysql
+    ports:
+      - 3307:3306
+    expose:
+      - 3307
+  #restart: always
+
+  blockchain:
+    image: trufflesuite/ganache-cli:v6.12.1
+    ports:
+      - 8545:8545
+    command: ["-h=0.0.0.0","--mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit'","--db ganache-db","-l 9000000000","-d 100000000","--allowUnlimitedContractSize","--secure --unlock 0xcC88B43de8E861e01F17127a0F59BbfD17c1e699"]
+
+#    command: ["-d 100000000 --allowUnlimitedContractSize --db ganache-db --port 8545 -l 9000000000 --accounts 10 --mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit' --networkId 5777 -h=0.0.0.0"]
+    expose:
+      - 8545
+
+  backend:
+    image: restchain-service:solc-10
+    depends_on:
+      - database
+      - blockchain
+    environment:
+      spring.datasource.url: jdbc:mysql://database:3306/restchain?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      spring.datasource.username: restchain
+      spring.datasource.password: restchain
+      spring.jpa.database: mysql
+      solidity.account.admin: '0xcC88B43de8E861e01F17127a0F59BbfD17c1e699'
+      solidity.password.admin: '0xafc9b7e192122f7b47e113b55b55be58fff15343cfdf126f9abcd192d275c2a3'
+      solidity.pragma.solidity-version: ^0.5.17
+      solidity.gas.price: 2000000000
+      solidity.gas.limit: 900000000
+    volumes:
+    - ./upload-dir:/app/upload-dir
+    - ./solidity-dir:/app/solidity-dir
+    ports:
+      - 8080:8085
+    expose:
+      - 8080
+    restart: on-failure
+
+  frontend:
+    image: restchain-web:8
+    depends_on:
+      - backend
+    ports:
+      - 80:80
+    expose:
+      - 80
