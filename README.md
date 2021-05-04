@@ -5,7 +5,7 @@ Experimental repository to test our prototype application.
 
 .....??
 ## How to install
-**Requirements*:
+**Requirements**:
 
 * [Docker](https://www.docker.com/) 
 * [Metamask](https://metamask.io)
