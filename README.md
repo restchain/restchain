@@ -37,11 +37,18 @@ Once the accounts have been imported and the user address (account) selected, it
 (to insert photo)
 
 # Trobouleshooting
-* **Operation not permitted**  
-When occured this error ```java.nio.file.FileSystemException: [upload-dir|solidity-dir]/[FILENAME_SCHEMA].bpmn: Operation not permitted```
+###Operation not permitted
+
+When occured this error 
+
+```java.nio.file.FileSystemException: [upload-dir|solidity-dir]/[FILENAME_SCHEMA].bpmn: Operation not permitted```
+
 it usually means that the directory permissions are not configured properly inside the project directory.  
+
 For linux users see how to install correctly [Docker](https://docs.docker.com/engine/install/linux-postinstall/).
 
-* **Black dots on the bpmn-modeler during Choreography Interaction or tools panel missing during Choreography Design**  
+###Black dots on the bpmn-modeler during Choreography Interaction or tools panel missing during Choreography Design
+
 Sometimes due to problems with the style sheets, still to be solved, it may occur that black circles appear above the model during the interaction phase or that the tools panel disappears in the Bpmn Designer modeller.
+
 To solve this issue you need to reload the page and then go to the Choreography design page in order to reloads the style sheet correctly.
