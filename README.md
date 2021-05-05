@@ -23,6 +23,21 @@ To check out logs:
 docker-compose log -f
 ```
 
+The execution will provide:
+
+* 3 folders 
+	* `database`     
+	* `solidity-dir`
+	* `upload-dir`
+* 4 services
+	* a *frontend* exposed on port `80`
+	* a *backend*  exposed on port `8080	`
+	* a *database* exposed on port `3307`
+	* a *blockchain* exposed on port `8545`
+
+To start with the application just point your browser at the [http//localhost](http//localhost) address.	
+	
+
 ## Enviroment setting
 For development and testing purposes we are using [ganache](https://github.com/trufflesuite/ganache-cli) as a local blockchain.  
 Ganache is configured with the option `-d` to generate deterministic addresses based on a seed prhase (called pre-defined mnemonic):
