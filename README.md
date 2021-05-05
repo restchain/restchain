@@ -43,7 +43,7 @@ When occured this error
 
 ```java.nio.file.FileSystemException: [upload-dir|solidity-dir]/[FILENAME_SCHEMA].bpmn: Operation not permitted```
 
-it usually means that the directory permissions are not configured properly inside the project directory.  
+it usually means that the directory permissions are not configured properly inside the project folder.  
 
 For linux users see how to install correctly [Docker](https://docs.docker.com/engine/install/linux-postinstall/).
 
