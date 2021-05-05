@@ -26,9 +26,9 @@ docker-compose log -f
 The execution will provide:
 
 * 3 folders 
-	* `database`     
-	* `solidity-dir`
-	* `upload-dir`
+	* `database`: containing the database data     
+	* `solidity-dir`: containing the bpmn schema artifacts
+	* `upload-dir`: containing the smart contract artifacts
 * 4 services
 	* a *frontend* exposed on port `80`
 	* a *backend*  exposed on port `8080	`
