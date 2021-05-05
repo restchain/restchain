@@ -51,7 +51,7 @@ To make the application work correctly the seed prhase must be imported into *Me
 Once the accounts have been imported and the user address (account) selected, it must be verified that metamask is correctly connected to the application.  
 (to insert photo)
 
-# Trobouleshooting
+# Troubleshooting
 ### Operation not permitted
 
 When occured this error 
