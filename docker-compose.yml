@@ -29,7 +29,7 @@ services:
       - 8545
 
   backend:
-    image: restchain/restchain-service:0.2-new
+    image: restchain/restchain-service:0.3
     depends_on:
       - database
       - blockchain
@@ -47,13 +47,13 @@ services:
     - ./upload-dir:/app/upload-dir
     - ./solidity-dir:/app/solidity-dir
     ports:
-      - 8080:8085
+      - 8085:8085
     #expose:
-    #  - 8080
+      - 8085
     restart: on-failure
 
   frontend:
-    image: restchain/restchain-web:0.2-new
+    image: restchain/restchain-web:0.3
     depends_on:
       - backend
     ports:
