@@ -19,17 +19,17 @@ services:
   #restart: always
 
   blockchain:
-    image: trufflesuite/ganache-cli:v6.12.1
+    image: trufflesuite/ganache-cli:v6.12.2
     ports:
       - 8545:8545
-    command: ["-h=0.0.0.0","--mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit'","--db ganache-db","-l 9000000000","-d 100000000","--allowUnlimitedContractSize","--secure --unlock 0xcC88B43de8E861e01F17127a0F59BbfD17c1e699"]
+    command: ["-h=0.0.0.0","--mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit'","--db ganache-db","-l=9000000000","-d=100000000","--allowUnlimitedContractSize","--networkId=5777","--verbose","--unlock=0xcC88B43de8E861e01F17127a0F59BbfD17c1e699"  ]
 
 #    command: ["-d 100000000 --allowUnlimitedContractSize --db ganache-db --port 8545 -l 9000000000 --accounts 10 --mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit' --networkId 5777 -h=0.0.0.0"]
     expose:
       - 8545
 
   backend:
-    image: restchain/restchain-service:0.1
+    image: restchain/restchain-service:0.2-new
     depends_on:
       - database
       - blockchain
@@ -48,15 +48,33 @@ services:
     - ./solidity-dir:/app/solidity-dir
     ports:
       - 8080:8085
-    expose:
-      - 8080
+    #expose:
+    #  - 8080
     restart: on-failure
 
   frontend:
-    image: restchain/restchain-web:0.1
+    image: restchain/restchain-web:0.2-new
     depends_on:
       - backend
     ports:
       - 80:80
     expose:
       - 80
+
+  client1:
+    image: restchain/restchain-web-client:0.1
+    depends_on:
+      - backend
+    ports:
+      - 81:80
+    expose:
+      - 81
+
+  client2:
+    image: restchain/restchain-web-client:0.1
+    depends_on:
+      - backend
+    ports:
+      - 82:80
+    expose:
+      - 82
