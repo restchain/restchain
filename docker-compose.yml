@@ -61,8 +61,8 @@ services:
     expose:
       - 80
 
-  client1:
-    image: restchain/restchain-web-client:0.2
+  mediator1:
+    image: restchain/restchain-web-client:0.3
     depends_on:
       - backend
     ports:
@@ -70,11 +70,20 @@ services:
     expose:
       - 81
 
-  client2:
-    image: restchain/restchain-web-client:0.2
+  mediator2:
+    image: restchain/restchain-web-client:0.3
     depends_on:
       - backend
     ports:
       - 82:80
     expose:
       - 82
+
+  mediator3:
+    image: restchain/restchain-web-client:0.3
+    depends_on:
+      - backend
+    ports:
+      - 83:80
+    expose:
+      - 83    
