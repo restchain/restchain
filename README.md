@@ -1,9 +1,9 @@
 # RESTCHAIN
-Experimental repository to test Restchain prototype application.
+<img src="./rc-logo.png"  width="200" />
+Experimental repository to use for testing Restchain prototype application.
 
 ## Description
-
-.....??
+Restchain is a general framework that permits to usea blockchain infrastructure to constraint and certify the relevant interactions that took place among the participants to a service choreography. The framework permits to automatically derive a service mediator from a choreography specification in the form of a Smart Contract for a given blockchain infrastructure. The mediator will also expose REST APIs for each participant included inthe choreography specs. This will permit the developer of software services to use a blockchain infrastructure to interact with the other choreography participants, and without the need to know any specific detail of such a technology. In its turn the mediator will check and store within the blockchain infrastructure the order and the payload of the messages exchanged by the choreography participants, making this information available for future auditing. The framework has been implemented and validated using theEthereum blockchain infrastructure.
 ## Installation
 **Requirements**:
 
