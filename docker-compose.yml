@@ -62,7 +62,7 @@ services:
       - 80
 
   client1:
-    image: restchain/restchain-web-client:0.1
+    image: restchain/restchain-web-client:0.2
     depends_on:
       - backend
     ports:
@@ -71,7 +71,7 @@ services:
       - 81
 
   client2:
-    image: restchain/restchain-web-client:0.1
+    image: restchain/restchain-web-client:0.2
     depends_on:
       - backend
     ports:
