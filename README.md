@@ -61,7 +61,7 @@ include poem goose genuine baby flat mom token drama harsh sadness fit
 To make the application work correctly the seed prhase must be imported into *Metamask* by the *'Import using the seed phrase'* feature to retrieve the proper accounts from the blockchain. (to insert photo?)
 
 Once the accounts have been imported and the user address (account) selected, it must be verified that metamask is correctly connected to the application.  
-<img src="./images/Metamask1.png"  width="200" /><img src="./Metamask2.png"  width="200" />
+<img src="./images/Metamask1.png"  width="200" /><img src="./images/Metamask2.png"  width="200" />
 
 
 
