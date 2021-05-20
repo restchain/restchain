@@ -1,7 +1,7 @@
 # Use case example
 Description of the data exchange for simulating the interaction between Customer, Retailer and Supplier through REST API.
 ## Order
-Used to make an order.
+Used by Customer to make an order.
 
 **Endpoint**  
 
@@ -29,7 +29,7 @@ Used to make an order.
 ```
 
 ## Delivery
-Used to set the shipment detail.
+Used by Retailer to set the shipment details.
 
 **Endpoint**  
 
@@ -66,12 +66,12 @@ Used to set the shipment detail.
 }
 ```
 
-## Delivery plan
-Used to summarise delivery detail.
+## Delivery plan notification
+Used by Retailer to summarise delivery details to the Customer by email.
 
 **Endpoint**  
 
-- name: * deliveryPlan*
+- name: *deliveryPlan*
 - method: GET
 - url: [https://run.mocky.io/v3/3abc90e3-9da6-45ff-ac63-d8e38db83716](https://run.mocky.io/v3/3abc90e3-9da6-45ff-ac63-d8e38db83716)
 
@@ -81,38 +81,8 @@ Used to summarise delivery detail.
 &deliveryId=d89c0797-fa13-4ec3-af7c-d0e922e8dc2f
 ```
 
-**Response**
-
-
-```
-{
-	"deliveryId": "d89c0797-fa13-4ec3-af7c-d0e922e8dc2f",
-	"orderInfo":
-		{
-			"productId" : "tU9pu89f9x",	
-			"quantity"  : 200,
-			"price" : 2500
-		}
-		
-	"deliveryInfo":
-		{	
-			"name": "Ervin Howell",
-				"email": "ehowell@melissa.tv",
-				"address": {
-					"street": "Victor Plains",
-					"suite": "Suite 879",
-					"city": "Wisokyburgh",
-					"zipcode": "90566-7771"
-				},
-				"phone": "010-692-6593 x09125",
-				"date"  : 2021-10-10
-				"time"  : 09:30	
-		}
-}
-```
-
 ## Delivery acceptance
-Used to notify that the package has been taken over.
+Used by Customer to give the final acceptance on the plan previously received.
 
 **Endpoint**  
 
@@ -128,7 +98,7 @@ Used to notify that the package has been taken over.
 }
 ```
 
-**Response**
+**Response** 
 
 ```
 {
@@ -137,8 +107,8 @@ Used to notify that the package has been taken over.
 }
 ```
 
-## Payment notification
-Used to notify the payment.
+## Payment
+Used by Customer to notify the payment.
 
 **Endpoint**  
 
@@ -166,7 +136,7 @@ Used to notify the payment.
 ```
 
 ## Delivery schedule
-Used to notify scheduled delivery.
+Used by Retailer to notify scheduled delivery.
 
 **Endpoint**  
 
@@ -198,14 +168,6 @@ Used to notify scheduled delivery.
 }
 ```
 
-**Response**
-
-```
-{
-	"message" : "Delivery schedule notification sent to: ehowell@melissa.tv "
-}
-```
-
 
 ## Order bill
 Used to notify the order bill.
@@ -229,10 +191,32 @@ Used to notify the order bill.
 }
 ```
 
+## Order completed
+Used by Customer to confirm delivery.
+
+**Endpoint**  
+
+- name: *orderCompleted*
+- method: POST
+- url: [https://run.mocky.io/v3/93a7bbdd-7d0f-4b6d-86cc-4ae4ad25a3c5](https://run.mocky.io/v3/93a7bbdd-7d0f-4b6d-86cc-4ae4ad25a3c5)
+
+**Data**
+
+```
+{
+	"oderId": "0d50f2ca-b615-4d3a-be84-dbc0d3d46ddf",
+	"deliveryId": "d89c0797-fa13-4ec3-af7c-d0e922e8dc2f",
+	"status": "RECEIVED"
+	"feedback": "All right",
+	"from": "customer-45532",
+	"date" : "2021-10-8 11:25:23"
+}
+```
+
 **Response**
 
 ```
 {
-	"message" : "Order bill Notification sent to customer 'customer-45532' "
+	"message": "Order completed!"
 }
 ```
