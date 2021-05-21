@@ -16,20 +16,17 @@ services:
       - 3307:3306
     expose:
       - 3307
-  #restart: always
 
   blockchain:
     image: trufflesuite/ganache-cli:v6.12.2
     ports:
       - 8545:8545
-    command: ["-h=0.0.0.0","--mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit'","--db ganache-db","-l=9000000000","-d=100000000","--allowUnlimitedContractSize","--networkId=5777","--verbose","--unlock=0xcC88B43de8E861e01F17127a0F59BbfD17c1e699"  ]
-
-#    command: ["-d 100000000 --allowUnlimitedContractSize --db ganache-db --port 8545 -l 9000000000 --accounts 10 --mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit' --networkId 5777 -h=0.0.0.0"]
+    command: ["-h=0.0.0.0","--mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit'","--db ganache-db","-l=9000000000","-d=100000000","--allowUnlimitedContractSize","--networkId=5777","--unlock=0xcC88B43de8E861e01F17127a0F59BbfD17c1e699"]
     expose:
       - 8545
 
   backend:
-    image: restchain/restchain-service:0.3
+    image: restchain/restchain-service:0.4
     depends_on:
       - database
       - blockchain
@@ -39,7 +36,6 @@ services:
       spring.datasource.password: restchain
       spring.jpa.database: mysql
       solidity.account.admin: '0xcC88B43de8E861e01F17127a0F59BbfD17c1e699'
-      solidity.password.admin: '0xafc9b7e192122f7b47e113b55b55be58fff15343cfdf126f9abcd192d275c2a3'
       solidity.pragma.solidity-version: ^0.5.17
       solidity.gas.price: 2000000000
       solidity.gas.limit: 900000000
@@ -53,16 +49,17 @@ services:
     restart: on-failure
 
   frontend:
-    image: restchain/restchain-web:0.3
+    image: restchain/restchain-web:0.4
     depends_on:
       - backend
     ports:
       - 80:80
     expose:
       - 80
+    restart: on-failure
 
   mediator1:
-    image: restchain/restchain-web-client:0.3
+    image: restchain/restchain-web-client:0.4
     depends_on:
       - backend
     ports:
@@ -71,7 +68,7 @@ services:
       - 81
 
   mediator2:
-    image: restchain/restchain-web-client:0.3
+    image: restchain/restchain-web-client:0.4
     depends_on:
       - backend
     ports:
@@ -80,7 +77,7 @@ services:
       - 82
 
   mediator3:
-    image: restchain/restchain-web-client:0.3
+    image: restchain/restchain-web-client:0.4
     depends_on:
       - backend
     ports:
