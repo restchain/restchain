@@ -1,10 +1,11 @@
 # RESTCHAIN
 <img src="./images/rc-logo.png"  width="200" />
+
 Experimental repository to use for testing Restchain prototype application.
 
 ## Description
 
-Restchain is a general framework that permits to usea blockchain infrastructure to constraint and certify the relevant interactions that took place among the participants to a service choreography.  
+Restchain is a general framework that permits to use a blockchain infrastructure to constraint and certify the relevant interactions that took place among the participants to a service choreography.  
 
 The framework permits to automatically derive a service mediator from a choreography specification in the form of a Smart Contract for a given blockchain infrastructure. The mediator will also expose REST APIs for each participant included inthe choreography specs. This will permit the developer of software services to use a blockchain infrastructure to interact with the other choreography participants, and without the need to know any specific detail of such a technology. In its turn the mediator will check and store within the blockchain infrastructure the order and the payload of the messages exchanged by the choreography participants, making this information available for future auditing. 
 
@@ -17,7 +18,7 @@ An [example](Example.MD) is also provided for testing the framework.
 
 * [Docker](https://www.docker.com/) 
 * [Metamask](https://metamask.io)
-* [Allow CORS plugin](https://mybrowseraddon.com/access-control-allow-origin.html) (suggested) - Te use of the RestChain Mediator in this particular configuration generates CORS exceptions that can be solved with the use of this plugin installed and actived in the browser) 
+* [Allow CORS plugin](https://mybrowseraddon.com/access-control-allow-origin.html) (suggested) - Using the RestChain Mediator in this particular configuration generates CORS exceptions, an easy solution to solve the problem is using this plugin installed and actived in the browser. 
 
 To run the application you need to clone locally the project and then run the following commands:
 
@@ -26,13 +27,13 @@ cd restchain
 docker-compose up -d 
 ```
 
-To check out logs:
+Checking out logs:
 
 ```
 docker-compose log -f
 ```
 
-The execution will provide:
+The execution will be providing:
 
 * 3 folders 
 	* `database`: containing the database data     
@@ -48,7 +49,7 @@ The execution will provide:
  		* a *mediator* exposed on port `82`
 	 	* a *mediator* exposed on port `83`
 
-To start with the application just point your browser at the [http//localhost](http//localhost) address and access the RestChain manager. Then each user can access their RestChian mediator pointing one of the link [http//localhost:81](http//localhost:81), [http//localhost:82](http//localhost:82) and [http//localhost:83](http//localhost:83).
+To start with the application just point your browser at the [http://localhost](http://localhost) address and loggin in the RestChain manager. Then each user can access their "local" RestChain mediator pointing one of the link [http://localhost:81](http://localhost:81), [http://localhost:82](http://localhost:82) and [http://localhost:83](http://localhost:83).
 
 ## Enviroment settings
 For development and testing purposes we are using [ganache](https://github.com/trufflesuite/ganache-cli) as a local blockchain.  
@@ -84,7 +85,7 @@ Once the accounts have been imported and the user address (account) selected, it
 
 	To solve this issue you need to reload the page and then go to the Choreography design page in order to reloads the style sheet correctly.
 
-* ### Error 500 while ulpoading the desgined model
+* ### Error 500 while ulpoading the designed model
 	Pay attention in the creation of the BPMN model taking care to have correctly set the envelopes of the choreography task.
 
 * ### BPMN Model which is not responding and which appears not colored during the interaction phase
