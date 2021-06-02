@@ -11,7 +11,7 @@ The framework permits to automatically derive a service mediator from a choreogr
 
 The framework has been implemented and validated using the [Ethereum](https://ethereum.org/) blockchain infrastructure.
 
-An [example](./example/Example.md) is also provided for testing the framework.
+An [example](./example/Example.md) is also provided for testing the framework, here a short video [demo](https://www.youtube.com/watch?v=RrgNvYS5tAk).
 
 ## Installation
 **Requirements**:
