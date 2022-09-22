@@ -1,13 +1,13 @@
 # RESTCHAIN
 <img src="./images/rc-logo.png"  width="200" />
 
-Experimental repository to use for testing Restchain prototype application.
+Experimental repository for testing Restchain prototype application.
 
 ## Description
 
-Restchain is a general framework that permits to use a blockchain infrastructure to constraint and certify the relevant interactions that took place among the participants to a service choreography.  
+Restchain is a general framework that allows to use a blockchain infrastructure to constraint and certify the relevant interactions that took place among the participants of a service choreography.  
 
-The framework permits to automatically derive a service mediator from a choreography specification in the form of a Smart Contract for a given blockchain infrastructure. The mediator will also expose REST APIs for each participant included inthe choreography specs. This will permit the developer of software services to use a blockchain infrastructure to interact with the other choreography participants, and without the need to know any specific detail of such a technology. In its turn the mediator will check and store within the blockchain infrastructure the order and the payload of the messages exchanged by the choreography participants, making this information available for future auditing. 
+The framework automatically derives a service mediator from a choreography specification in the form of a Smart Contract for a given blockchain infrastructure. The mediator will also expose REST APIs for each participant included inthe choreography specs. This will permit the developer of software services to use a blockchain infrastructure to interact with the other choreography participants, and without the need to know any specific detail of such a technology. In its turn the mediator will check and store within the blockchain infrastructure the order and the payload of the messages exchanged by the choreography participants, making this information available for future auditing. 
 
 The framework has been implemented and validated using the [Ethereum](https://ethereum.org/) blockchain infrastructure.
 
@@ -49,7 +49,8 @@ The execution will be providing:
  		* a *mediator* exposed on port `82`
 	 	* a *mediator* exposed on port `83`
 
-To start with the application just point your browser at the [http://localhost](http://localhost) address and loggin in the RestChain manager. Then each user can access their "local" RestChain mediator pointing one of the link [http://localhost:81](http://localhost:81), [http://localhost:82](http://localhost:82) and [http://localhost:83](http://localhost:83).
+## Starting 
+Open the browser at the [http://localhost](http://localhost) address and login to the RestChain manager. Each user then can access their own "local" RestChain mediator opening the link [http://localhost:81](http://localhost:81), [http://localhost:82](http://localhost:82) and [http://localhost:83](http://localhost:83).
 
 ## Enviroment settings
 For development and testing purposes we are using [ganache](https://github.com/trufflesuite/ganache-cli) as a local blockchain.  
