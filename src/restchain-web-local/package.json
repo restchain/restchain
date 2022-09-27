@@ -1,0 +1,58 @@
+{
+  "name": "chorchain-web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@drizzle-utils/core": "^0.3.1-alpha.0",
+    "@drizzle-utils/get-web3": "^0.2.2-alpha.0",
+    "antd": "^3.24.2",
+    "axios": "^0.19.0",
+    "babel-helper-builder-react-jsx": "^6.26.0",
+    "bpmn-js": "^6.0.4",
+    "bpmn-js-properties-panel": "^0.33.0",
+    "camunda-bpmn-moddle": "^4.3.0",
+    "canvg": "^3.0.2",
+    "chor-js": "^0.4.3",
+    "diagram-js": "^5.0.0",
+    "ipfs-mini": "^1.1.5",
+    "lodash": "^4.17.15",
+    "raw-loader": "^3.1.0",
+    "react": "^16.10.2",
+    "react-app-rewired": "^2.1.4",
+    "react-dom": "^16.10.2",
+    "react-refetch": "^3.0.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-simple-code-editor": "^0.11.0",
+    "react-syntax-highlighter": "^12.2.1",
+    "react-xml-viewer": "^1.0.3",
+    "react-json-pretty": "^2.2.0"
+  },
+  "devDependencies": {
+    "@babel/helper-builder-react-jsx": "^7.12.13",
+    "@babel/helper-define-map": "^7.13.12",
+    "@babel/helper-regex": "^7.10.5",
+    "http-proxy-middleware": "^0.20.0"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

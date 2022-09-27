@@ -1,0 +1,44 @@
+{
+  "name": "Magic",
+  "prefix": "modifier",
+  "uri": "http://magic",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "Modifier",
+      "extends": [
+        "bpmn:Message"
+      ],
+      "properties": [
+        {
+          "name": "all",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "id0",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "id1",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "id2",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "id3",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ]
+}

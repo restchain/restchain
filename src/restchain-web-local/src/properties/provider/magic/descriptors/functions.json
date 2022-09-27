@@ -1,0 +1,84 @@
+[
+  {
+    "name": "createAuction",
+    "value": "createAuction",
+    "description": "Provides an initialization to the auctioning system",
+    "returnType": "uint",
+    "params": [
+      {
+        "name": "_itemList",
+        "type": "bytes32[]",
+        "extra": "memory"
+      },
+      {
+        "name": "duration",
+        "type": "uint"
+      },
+      {
+        "name": "param3",
+        "type": "uint"
+      }
+    ],
+    "dependencies": {
+      "vars": [
+        "auction"
+      ],
+      "functions": [
+        "createLotAuction"
+      ]
+    },
+    "body": "state.auction.lots=_itemsList; //domains list\nstate.auction.endTime=0; //not yet started , default endTime\nstate.auction.startBlock=block.number;\nstate.auction.maxBidValue=100;\nstate.auction.maxLots=2;\nstate.auction.id =state.auction.id+1;\nfor(uint i = 0; i <_itemsList.length; i++){\nbytes32 _item = _itemsList[i]\ncreateLotAuction(_item,state.auction.bidding);}"
+  },
+  {
+    "name": "createLotAuction",
+    "value": "createLotAuction",
+    "description": "Creates a single auction within a Lot",
+    "returnType": "uint",
+    "params": [
+      {
+        "name": "_item",
+        "type": "bytes32"
+      },
+      {
+        "name": "_bidding",
+        "type": "uint"
+      },
+      {
+        "name": "param3",
+        "type": "uint"
+      }
+    ],
+    "dependencies": {
+      "vars": [
+        "auction"
+      ],
+      "functions": [
+        "LotAuction"
+      ]
+    },
+    "body": "LotAuction lotA=new LotAuction(_bidding);\n\tstate.auction.lotsMap[_item] = lot(_item,lotA);"
+  },
+  {
+    "name": "addParticipant",
+    "value": "addParticipant",
+    "description": "Add a participant",
+    "returnType": "",
+    "params": [
+      {
+        "name": "_participant",
+        "type": "address",
+        "extra": "memory"
+      }
+    ],
+    "dependencies": {
+      "vars": [
+        "auction"
+      ],
+      "functions": [
+        "createLotAuction"
+      ]
+    },
+    "body": "state.auction.partecipantsMap[_partecipant].id   = state.auction.partecipants.length;   // Posizione nella lista dei partecipanti\nstate.auction.partecipantsMap[_partecipant].exists = true;//Prova dell'esistenza\nstate.auction.partecipants.push(_partecipant);"
+  }
+]
+

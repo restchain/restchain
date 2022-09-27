@@ -1,0 +1,23 @@
+[
+  {
+    "name": "auction",
+    "value": "auction",
+    "description": "Auction struct",
+    "params": [
+      {
+        "name": "_itemList",
+        "type": "bytes32[]",
+        "extra": "memory"
+      },
+      {
+        "name": "duration",
+        "type": "uint"
+      },
+      {
+        "name": "param3",
+        "type": "uint"
+      }
+    ]
+  }
+]
+

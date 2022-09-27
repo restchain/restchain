@@ -1,0 +1,41 @@
+{
+  "name": "ChorChain",
+  "prefix": "cc",
+  "uri": "http://chorchain.com/schema/bpmn/cc",
+  "associations": [],
+  "types": [
+    {
+      "name": "signature",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "paramsType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "paramsName",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "returnsType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "returnsName",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "interfaceMethod",
+          "isAttr": true,
+          "type": "Boolean"
+        }
+      ]
+    }
+  ]
+}
