@@ -17,28 +17,43 @@ services:
     expose:
       - 3307
 
-  blockchain:
-    image: trufflesuite/ganache-cli:v6.12.2
+#  blockchain:
+#    image: trufflesuite/ganache-cli:v6.12.2
+#    ports:
+#      - 8545:8545
+#    command: ["-h=0.0.0.0","--mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit'","--db ganache-db","-l=9000000000","-d=100000000","--allowUnlimitedContractSize","--networkId=5777","--unlock=0xcC88B43de8E861e01F17127a0F59BbfD17c1e699"]
+#    expose:
+#      - 8545
+  ipfs-node-1:
+    container_name: ipfs-node-1
+    image: restchain/restchain-ipfs-service:0.1
     ports:
-      - 8545:8545
-    command: ["-h=0.0.0.0","--mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit'","--db ganache-db","-l=9000000000","-d=100000000","--allowUnlimitedContractSize","--networkId=5777","--unlock=0xcC88B43de8E861e01F17127a0F59BbfD17c1e699"]
-    expose:
-      - 8545
+      - 4001:4001 # ipfs swarm - expose if needed/wanted
+      - 127.0.0.1:5001:5001 # ipfs api - expose if needed/wanted
+      - 127.0.0.1:8080:8080 # ipfs gateway - expose if needed/wanted
+    volumes:
+      - ./data/ipfs:/data/ipfs
+      - ./data/ipfs-staging:/staging
 
   backend:
-    image: restchain/restchain-service:0.4
+    image: restchain/restchain-service:1.0.0
     depends_on:
       - database
-      - blockchain
+      - ipfs-node-1
     environment:
       spring.datasource.url: jdbc:mysql://database:3306/restchain?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       spring.datasource.username: restchain
       spring.datasource.password: restchain
       spring.jpa.database: mysql
+      solidity.gas.price: 2500000015
+      solidity.gas.limit: 20000000
+      solidity.node.url: https://rpc-mumbai.maticvigil.com/
+      solidity.node.chainId: 80001
       solidity.account.admin: '0xcC88B43de8E861e01F17127a0F59BbfD17c1e699'
+      solidity.admin.keyfile: 'afc9b7e192122f7b47e113b55b55be58fff15343cfdf126f9abcd192d275c2a3'
+      web3j.client-address: https://rpc-mumbai.maticvigil.com/
       solidity.pragma.solidity-version: ^0.5.17
-      solidity.gas.price: 2000000000
-      solidity.gas.limit: 900000000
+      springdoc.api-docs.path: /api-docs
     volumes:
     - ./upload-dir:/app/upload-dir
     - ./solidity-dir:/app/solidity-dir
@@ -49,7 +64,7 @@ services:
     restart: on-failure
 
   frontend:
-    image: restchain/restchain-web:0.4
+    image: restchain/restchain-web:0.5
     depends_on:
       - backend
     ports:
@@ -59,7 +74,7 @@ services:
     restart: on-failure
 
   mediator1:
-    image: restchain/restchain-web-client:0.4
+    image: restchain/restchain-web-mediator:0.5
     depends_on:
       - backend
     ports:
@@ -68,7 +83,7 @@ services:
       - 81
 
   mediator2:
-    image: restchain/restchain-web-client:0.4
+    image: restchain/restchain-web-mediator:0.5
     depends_on:
       - backend
     ports:
@@ -77,7 +92,7 @@ services:
       - 82
 
   mediator3:
-    image: restchain/restchain-web-client:0.4
+    image: restchain/restchain-web-mediator:0.5
     depends_on:
       - backend
     ports:
