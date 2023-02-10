@@ -22,7 +22,8 @@ FROM nginx:alpine
 #Importo i contenuti statici buildati
 COPY ./build/ /var/www
 #Importo la configurazione del NGINX
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./ngnix-configuration/default.conf /etc/nginx/conf.d/default.conf
+COPY ./ngnix-configuration/nginx.conf /etc/nginx/nginx.conf
 
 #Porta dove espongo il server (vedere anche come è configurato Nginx in nginx.conf)
 EXPOSE 80
