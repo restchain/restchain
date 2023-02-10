@@ -17,16 +17,9 @@ services:
     expose:
       - 3307
 
-#  blockchain:
-#    image: trufflesuite/ganache-cli:v6.12.2
-#    ports:
-#      - 8545:8545
-#    command: ["-h=0.0.0.0","--mnemonic='include poem goose genuine baby flat mom token drama harsh sadness fit'","--db ganache-db","-l=9000000000","-d=100000000","--allowUnlimitedContractSize","--networkId=5777","--unlock=0xcC88B43de8E861e01F17127a0F59BbfD17c1e699"]
-#    expose:
-#      - 8545
-  ipfs-node-1:
-    container_name: ipfs-node-1
-    image: restchain/restchain-ipfs-service:0.1
+  ipfs-service:
+    container_name: ipfs-service
+    image: restchain/restchain-ipfs-service:0.2
     ports:
       - 4001:4001 # ipfs swarm - expose if needed/wanted
       - 127.0.0.1:5001:5001 # ipfs api - expose if needed/wanted
@@ -39,7 +32,7 @@ services:
     image: restchain/restchain-service:1.0.0
     depends_on:
       - database
-      - ipfs-node-1
+      - ipfs-service
     environment:
       spring.datasource.url: jdbc:mysql://database:3306/restchain?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       spring.datasource.username: restchain
