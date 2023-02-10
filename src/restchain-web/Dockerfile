@@ -19,13 +19,15 @@
 # Production build based on Nginx with artifacts from Stage 0
 FROM nginx:alpine
 
-#Importo i contenuti statici buildati
+# Import of built static content
 COPY ./build/ /var/www
-#Importo la configurazione del NGINX
+
+# NGINX configuration import
 COPY ./ngnix-configuration/default.conf /etc/nginx/conf.d/default.conf
 COPY ./ngnix-configuration/nginx.conf /etc/nginx/nginx.conf
 
-#Porta dove espongo il server (vedere anche come è configurato Nginx in nginx.conf)
+# Port where the service will be exposed
 EXPOSE 80
-#Comando per eseguire il server
+
+# Command to execute the NGNIX Server
 CMD ["nginx", "-g", "daemon off;"]
