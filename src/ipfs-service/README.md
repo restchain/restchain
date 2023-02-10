@@ -1,6 +1,9 @@
 # IPFS SERVICE
 
-This folder is used for building a Docker image containing an IPFS Kubo service. The created image will provide a Kubo ipfs service that allows CORS to affected IP addresses and http methods.
+The project make use of a self IPFS service necessary for the creation of  IPFS resources.
 
-Check the `ipfs-config.sh` file to know which  ip  addresses are affected.
+The `Dockerfile` is used for building a Docker image containing a customized IPFS Kubo installation. The created image will provide a Kubo ipfs service that allows CORS to affected IP addresses and the designed HTTP methods.
+Check the `ipfs-config.sh` file to know which  ip  addresses and HTTP methods are affected.
+
+
 
