@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+
 const express = require("express");
 const app = express();
 
@@ -15,15 +16,49 @@ const provider = new Web3.providers.HttpProvider('https://rpc-mumbai.maticvigil.
 const web3 = new Web3(provider);
 
 
+
+const BASE_URL = "http://localhost:8085";
+
+// Create instance of axios which utilizes BASE_URL
+const axiosInstance = axios.create({ baseURL: BASE_URL });
+
+
+
+const createSession = async () => {
+    console.log("create session");
+    const authParams = {
+      address: "0x535CCa8697F29DaC037a734D6984eeD7EA943A85",
+      password: "test"
+
+    };
+    const resp = await axios.post(BASE_URL+"/login", authParams,{headers: {'content-type': 'application/x-www-form-urlencoded'}});
+    const cookie = resp.headers["set-cookie"][0]; // get cookie from request
+    axiosInstance.defaults.headers.Cookie = cookie;   // attach cookie to axiosInstance for future requests
+  }
+
+  // send Post request to https://stackoverflow.com/protected after created session 
+createSession().then(() => {
+    axiosInstance.get('/contract/listImpl') // with new cookie
+  })
+
+
+
+
 console.log("1. Call for last Ethereum block ....")
 web3.eth.getBlockNumber().then((result) => {
     console.log("Latest Ethereum Block is ", result);
 });
 
 
+
+
+
+
+
+
 const getTestData = async () => {
     try {
-        const resp = await axios.get('http://webcode.me');
+        const resp = await axiosInstance.get('http://webcode.me');
         console.log(resp.data);
     } catch (err) {
         // Handle Error Here
