@@ -1,5 +1,8 @@
 const axios = require("axios");
 
+
+
+
 // Log content type
 require("axios-debug-log")({
   request: function (debug, config) {
@@ -43,7 +46,7 @@ const getListImpl = async () => {
   try {
     console.log("1. Called list impl ....");
 
-    const resp = await axiosInstance.get("http://localhost:8085/contract/4");
+    const resp = await axiosInstance.get("http://localhost:8085/contract/listImpl/1");
     console.log(resp.data);
   } catch (err) {
     // Handle Error Here
@@ -78,7 +81,28 @@ const craeteSession = async () => {
     const cookie = resp.headers["set-cookie"][0]; // get cookie from request
     console.log("Login [cookie]:", cookie);
     axiosInstance.defaults.headers.Cookie = cookie;
-    getListImpl();
+    // getListImpl();
+
+    const restChainContractImplementationList = await axiosInstance.get("http://localhost:8085/contract/listImpl")
+
+
+    console.log(restChainContractImplementationList.data[0])
+    const restChainContractImplementation = restChainContractImplementationList.data[0]
+    const contractDetail = await axiosInstance.get("http://localhost:8085/contract/"+restChainContractImplementation.id)
+    // console.log(contractDetail.data)
+    console.log("address",contractDetail.data.address)
+    console.log("xmlId",contractDetail.data.xmlId)
+
+
+    // // can use r1 here to formulate second http call
+    // const r2 = awaitaxiosInstance.get("http://localhost:8085/contract/model/xml/1")
+
+    // // can use r1 and r2 here to formulate third http call
+    // const r3 = await callhttp(url3, data3);
+
+
+
+
   } catch (err) {
     // Handle Error Here
     console.error("!! STATUS ERROR", err.response.status);

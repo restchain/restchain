@@ -1,2 +1,8 @@
 .DS_Store
-
+.idea/
+data/
+database/
+solidity-dir/
+src/restchain-agent-client/node_modules/
+src/restchain-web/node_modules/
+upload-dir/
