@@ -1,140 +1,88 @@
-const axios = require('axios');
+const axios = require("axios");
 
-
-const express = require("express");
-const app = express();
-
-const SmartContractAddress = "your smart contract address";
-const SmartContractABI = "contract_abi";
-const address = "account adress"
-const privatekey = "private key of the above account address";
-const rpcurl = "infura rpc url";
-
-const Web3 = require('web3');
-const {get} = require("axios");
-const provider = new Web3.providers.HttpProvider('https://rpc-mumbai.maticvigil.com/');
-const web3 = new Web3(provider);
-
-
+// Log content type
+require("axios-debug-log")({
+  request: function (debug, config) {
+    debug("Request with " + config.headers["content-type"]);
+  },
+  response: function (debug, response) {
+    debug(
+      "Response with " + response.headers["content-type"],
+      "from " + response.config.url
+    );
+  },
+  error: function (debug, error) {
+    // Read https://www.npmjs.com/package/axios#handling-errors for more info
+    debug("Boom", error.response.data);
+  }
+});
 
 const BASE_URL = "http://localhost:8085";
-
 // Create instance of axios which utilizes BASE_URL
-const axiosInstance = axios.create({ baseURL: BASE_URL });
-
-
-
-const createSession = async () => {
-    console.log("create session");
-    const authParams = {
-      address: "0x535CCa8697F29DaC037a734D6984eeD7EA943A85",
-      password: "test"
-
-    };
-    const resp = await axios.post(BASE_URL+"/login", authParams,{headers: {'content-type': 'application/x-www-form-urlencoded'}});
-    const cookie = resp.headers["set-cookie"][0]; // get cookie from request
-    axiosInstance.defaults.headers.Cookie = cookie;   // attach cookie to axiosInstance for future requests
-  }
-
-  // send Post request to https://stackoverflow.com/protected after created session 
-createSession().then(() => {
-    axiosInstance.get('/contract/listImpl') // with new cookie
-  })
-
-
-
-
-console.log("1. Call for last Ethereum block ....")
-web3.eth.getBlockNumber().then((result) => {
-    console.log("Latest Ethereum Block is ", result);
+const axiosInstance = axios.create({
+  baseURL: BASE_URL
 });
 
-
-
-
-
-
-
-
+/**
+ * Test DATA
+ */
 const getTestData = async () => {
-    try {
-        const resp = await axiosInstance.get('http://webcode.me');
-        console.log(resp.data);
-    } catch (err) {
-        // Handle Error Here
-        console.error(err);
-    }
+  try {
+    const resp = await axiosInstance.get("http://webcode.me");
+    console.log(resp.data);
+  } catch (err) {
+    // Handle Error Here
+    console.error(err);
+  }
 };
 
+/**
+ * List all contracts
+ */
 const getListImpl = async () => {
-    try {
-        const resp = await axios.get('http://localhost:8085/contract/listImpl');
-        console.log(resp.data);
-    } catch (err) {
-        // Handle Error Here
-        console.error("STATUS ERROR",err.response.data,err.response.status);
-    }
+  try {
+    console.log("1. Called list impl ....");
+
+    const resp = await axiosInstance.get("http://localhost:8085/contract/4");
+    console.log(resp.data);
+  } catch (err) {
+    // Handle Error Here
+    console.error("STATUS ERROR impl", err.response.data, err.response.status);
+  }
 };
-getListImpl()
 
-
-console.log("2. Testing axios ....")
-getTestData()
-
-
-console.log("3. Testing login ....")
-const loginData = {
+/**
+ * Create Session
+ */
+const craeteSession = async () => {
+  const loginData = {
     address: "0x535CCa8697F29DaC037a734D6984eeD7EA943A85",
     password: "test"
-}
+  };
+  try {
+    const resp = await axiosInstance.post(
+      "http://localhost:8085/login",
+      loginData,
+      {
+        maxRedirects: 0,
+        validateStatus: function (status) {
+          console.log("status in", status);
+          return true;
+        },
 
-
-// axios.post('http://localhost:8085/login', loginData,
-//     {headers: {'content-type': 'application/x-www-form-urlencoded'}}
-// ).then((response) => {
-//     console.log("resp",response.status)
-//     // console.log("4. Implementations ....")
-//     // axios.get('http://localhost:8085/contract/listImpl').then(resp => {
-//     // });
-//
-// });
-const postLogin = async () => {
-    try {
-        const resp = await axios.post('http://localhost:8085/login',loginData, {headers: {'content-type': 'application/x-www-form-urlencoded'}});
-        console.log("DATA",resp.data);
-        getListImpl()
-    } catch (err) {
-        // Handle Error Here
-        console.error("STATUS ERROR",err.response.status);
-    }
+        headers: { "content-type": "application/x-www-form-urlencoded" }
+      }
+    );
+    console.log("Login [STATUS]:", resp.data);
+    // console.log("Login [Headers]:", resp.headers);
+    const cookie = resp.headers["set-cookie"][0]; // get cookie from request
+    console.log("Login [cookie]:", cookie);
+    axiosInstance.defaults.headers.Cookie = cookie;
+    getListImpl();
+  } catch (err) {
+    // Handle Error Here
+    console.error("!! STATUS ERROR", err.response.status);
+  }
 };
 
-postLogin()
-
-console.log("4. Testing send Data ...")
-
-app.listen(2400, () => {
-    console.log("Server started at port 2400");
-});
-
-// const sendData = async () => {
-//
-//     console.log("in function");
-//     var provider = new Provider(privatekey, rpcurl);
-//     var web3 = new Web3(provider);
-//     var myContract = new web3.eth.Contract(SmartContractABI, SmartContractAddress);
-//     var oldvalue = await myContract.methods.retrieve().call();
-//     console.log("oldvalue", oldvalue);
-//
-//
-//     var receipt = await myContract.methods.store(5781).send({ from: address });
-//     console.log(receipt);
-//
-//     var newvalue = await myContract.methods.retrieve().call();
-//     console.log("newvalue", newvalue);
-//
-//     console.log("done with all things");
-//
-// }
-//
-// sendData();
+craeteSession();
