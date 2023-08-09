@@ -24,6 +24,10 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+	    <repository>
+	        <id>maven repo</id>
+            <url>https://jcenter.bintray.com/</url>
+	    </repository>
     </repositories>
 
     <dependencies>
@@ -54,7 +58,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.16.22</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
