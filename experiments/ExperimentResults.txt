@@ -1,0 +1,79 @@
+Prima comunicazione TwoWay
+
+
+** [TIME REQ]: Thu May 20 2021 17:21:19 GMT+0200 (Ora legale dell’Europa centrale)
+17:21:21.721 main.chunk.js:1984 ** [TIME REQ ]: Thu May 20 2021 17:21:21 GMT+0200 (Ora legale dell’Europa centrale)
+17:21:21.721 main.chunk.js:1985 ** [TIME REQ ]  1991
+17:21:23.190 main.chunk.js:1222 ** [TIME RESP 1 TwoWay]: Thu May 20 2021 17:21:23 GMT+0200 (Ora legale dell’Europa centrale)
+17:21:26.952 main.chunk.js:1230 ** [TIME RESP  1 TwoWay]: Thu May 20 2021 17:21:26 GMT+0200 (Ora legale dell’Europa centrale)
+17:21:26.952 main.chunk.js:1231 ** [TIME RESP  TwoWay  ElsapedTime]  3762
+
+
+Seconda TwoWay
+
+main.chunk.js:1975 ** [TIME REQ]: Thu May 20 2021 17:22:47 GMT+0200 (Ora legale dell’Europa centrale)
+17:22:52.065 main.chunk.js:1984 ** [TIME REQ ]: Thu May 20 2021 17:22:52 GMT+0200 (Ora legale dell’Europa centrale)
+17:22:52.067 main.chunk.js:1985 ** [TIME REQ ]  4643
+17:22:53.091 main.chunk.js:1222 ** [TIME RESP 1 TwoWay]: Thu May 20 2021 17:22:53 GMT+0200 (Ora legale dell’Europa centrale)
+17:22:55.957 main.chunk.js:1230 ** [TIME RESP  1 TwoWay]: Thu May 20 2021 17:22:55 GMT+0200 (Ora legale dell’Europa centrale)
+17:22:55.957 main.chunk.js:1231 ** [TIME RESP  TwoWay  ElsapedTime]  2866
+
+
+
+Terza  OneWay
+
+** [TIME REQ]: Thu May 20 2021 17:23:38 GMT+0200 (Ora legale dell’Europa centrale)
+17:23:40.427 main.chunk.js:1984 ** [TIME REQ ]: Thu May 20 2021 17:23:40 GMT+0200 (Ora legale dell’Europa centrale)
+17:23:40.427 main.chunk.js:1985 ** [TIME REQ ]  1986
+17:23:41.493 main.chunk.js:1196 ** [TIME RESP 1 OneWay]: Thu May 20 2021 17:23:41 GMT+0200 (Ora legale dell’Europa centrale)
+17:23:43.290 main.chunk.js:1204 ** [TIME RESP  1 OneWay]: Thu May 20 2021 17:23:43 GMT+0200 (Ora legale dell’Europa centrale)
+17:23:43.290 main.chunk.js:1205 ** [TIME RESP  OneWay ElsapedTime]  1797
+
+
+Quarta TwoWay
+
+** [TIME REQ]: Thu May 20 2021 17:25:07 GMT+0200 (Ora legale dell’Europa centrale)
+17:25:09.223 main.chunk.js:1984 ** [TIME REQ ]: Thu May 20 2021 17:25:09 GMT+0200 (Ora legale dell’Europa centrale)
+17:25:09.223 main.chunk.js:1985 ** [TIME REQ ]  1954
+17:25:10.183 main.chunk.js:1222 ** [TIME RESP 1 TwoWay]: Thu May 20 2021 17:25:10 GMT+0200 (Ora legale dell’Europa centrale)
+17:25:13.477 main.chunk.js:1230 ** [TIME RESP  1 TwoWay]: Thu May 20 2021 17:25:13 GMT+0200 (Ora legale dell’Europa centrale)
+17:25:13.478 main.chunk.js:1231 ** [TIME RESP  TwoWay  ElsapedTime]  3294
+
+
+Quinta TwoWay
+
+main.chunk.js:1975 ** [TIME REQ]: Thu May 20 2021 17:26:13 GMT+0200 (Ora legale dell’Europa centrale)
+17:26:15.944 main.chunk.js:1984 ** [TIME REQ ]: Thu May 20 2021 17:26:15 GMT+0200 (Ora legale dell’Europa centrale)
+17:26:15.944 main.chunk.js:1985 ** [TIME REQ ]  2282
+17:26:16.891 main.chunk.js:1222 ** [TIME RESP 1 TwoWay]: Thu May 20 2021 17:26:16 GMT+0200 (Ora legale dell’Europa centrale)
+17:26:20.113 main.chunk.js:1230 ** [TIME RESP  1 TwoWay]: Thu May 20 2021 17:26:20 GMT+0200 (Ora legale dell’Europa centrale)
+17:26:20.113 main.chunk.js:1231 ** [TIME RESP  TwoWay  ElsapedTime]  3222
+
+
+
+Dentro Parallel Order Bill
+
+
+** [TIME REQ]: Thu May 20 2021 17:27:05 GMT+0200 (Ora legale dell’Europa centrale)
+17:27:07.679 main.chunk.js:1984 ** [TIME REQ ]: Thu May 20 2021 17:27:07 GMT+0200 (Ora legale dell’Europa centrale)
+17:27:07.679 main.chunk.js:1985 ** [TIME REQ ]  1962
+17:27:08.642 main.chunk.js:1196 ** [TIME RESP 1 OneWay]: Thu May 20 2021 17:27:08 GMT+0200 (Ora legale dell’Europa centrale)
+17:27:11.091 main.chunk.js:1204 ** [TIME RESP  1 OneWay]: Thu May 20 2021 17:27:11 GMT+0200 (Ora legale dell’Europa centrale)
+17:27:11.092 main.chunk.js:1205 ** [TIME RESP  OneWay ElsapedTime]  2449
+
+
+Dentro Parallel Order Dlivery 
+
+main.chunk.js:1975 ** [TIME REQ]: Thu May 20 2021 17:28:19 GMT+0200 (Ora legale dell’Europa centrale)
+17:28:21.701 main.chunk.js:1984 ** [TIME REQ ]: Thu May 20 2021 17:28:21 GMT+0200 (Ora legale dell’Europa centrale)
+17:28:21.701 main.chunk.js:1985 ** [TIME REQ ]  2263
+
+Priam dell'end
+** [TIME REQ]: Thu May 20 2021 17:29:12 GMT+0200 (Ora legale dell’Europa centrale)
+17:29:14.302 main.chunk.js:1984 ** [TIME REQ ]: Thu May 20 2021 17:29:14 GMT+0200 (Ora legale dell’Europa centrale)
+17:29:14.303 main.chunk.js:1985 ** [TIME REQ ]  2046
+17:29:15.687 main.chunk.js:1222 ** [TIME RESP 1 TwoWay]: Thu May 20 2021 17:29:15 GMT+0200 (Ora legale dell’Europa centrale)
+17:29:18.647 main.chunk.js:1230 ** [TIME RESP  1 TwoWay]: Thu May 20 2021 17:29:18 GMT+0200 (Ora legale dell’Europa centrale)
+17:29:18.648 main.chunk.js:1231 ** [TIME RESP  TwoWay  ElsapedTime]  2960
+
+
