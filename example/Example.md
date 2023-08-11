@@ -9,6 +9,11 @@ Used by Customer to make an order.
 - method: POST  
 - url: [https://run.mocky.io/v3/8e24eab2-8ef5-469e-9c6e-00cc8bea986f](https://run.mocky.io/v3/8e24eab2-8ef5-469e-9c6e-00cc8bea986f)
 
+**URL**
+```
+https://run.mocky.io/v3/8e24eab2-8ef5-469e-9c6e-00cc8bea986f
+```
+
 **Data**
 
 ```
@@ -37,6 +42,10 @@ Used by Retailer to set the shipment details.
 - method: POST
 - url: [https://run.mocky.io/v3/c9ef98d9-4bf3-459b-bc0c-71198915a35f](https://run.mocky.io/v3/c9ef98d9-4bf3-459b-bc0c-71198915a35f)
 
+**URL**
+```
+https://run.mocky.io/v3/c9ef98d9-4bf3-459b-bc0c-71198915a35f
+```
 **Data**
 
 ```
@@ -75,10 +84,16 @@ Used by Retailer to summarise delivery details to the Customer by email.
 - method: GET
 - url: [https://run.mocky.io/v3/3abc90e3-9da6-45ff-ac63-d8e38db83716](https://run.mocky.io/v3/3abc90e3-9da6-45ff-ac63-d8e38db83716)
 
-**Data**
+**URL**
+```
+https://run.mocky.io/v3/3abc90e3-9da6-45ff-ac63-d8e38db83716
+```
+**Params**
 
 ```
-&deliveryId=d89c0797-fa13-4ec3-af7c-d0e922e8dc2f
+{
+	"deliveryId": "d89c0797-fa13-4ec3-af7c-d0e922e8dc2f"
+}
 ```
 
 ## Delivery acceptance
@@ -90,6 +105,10 @@ Used by Customer to give the final acceptance on the plan previously received.
 - method: GET
 - url: [https://run.mocky.io/v3/17768921-df48-485b-a827-2da9c57e8192](https://run.mocky.io/v3/17768921-df48-485b-a827-2da9c57e8192)
 
+**URL**
+```
+https://run.mocky.io/v3/17768921-df48-485b-a827-2da9c57e8192
+```
 **Data**
 
 ```
@@ -115,6 +134,11 @@ Used by Customer to notify the payment.
 - name: *paymentNotification*
 - method: POST
 - url: [https://run.mocky.io/v3/93a7bbdd-7d0f-4b6d-86cc-4ae4ad25a3c5](https://run.mocky.io/v3/93a7bbdd-7d0f-4b6d-86cc-4ae4ad25a3c5)
+
+**URL**
+```
+https://run.mocky.io/v3/93a7bbdd-7d0f-4b6d-86cc-4ae4ad25a3c5
+```
 
 **Data**
 
@@ -143,6 +167,11 @@ Used by Retailer to notify scheduled delivery.
 - name: *deliverySchedule*
 - method: POST
 - url: [https://run.mocky.io/v3/2cf82128-f204-455b-9040-8e59c204fc13](https://run.mocky.io/v3/2cf82128-f204-455b-9040-8e59c204fc13)
+
+**URL**
+```
+https://run.mocky.io/v3/2cf82128-f204-455b-9040-8e59c204fc13
+```
 **Data**
 
 ```
@@ -178,6 +207,10 @@ Used to notify the order bill.
 - method: POST
 - url: [https://run.mocky.io/v3/d9d53e4a-8996-4e8e-a14f-1f523d99e37d](https://run.mocky.io/v3/d9d53e4a-8996-4e8e-a14f-1f523d99e37d)
 
+**URL**
+```
+https://run.mocky.io/v3/d9d53e4a-8996-4e8e-a14f-1f523d99e37d
+```
 **Data**
 
 ```
@@ -200,6 +233,10 @@ Used by Customer to confirm delivery.
 - method: POST
 - url: [https://run.mocky.io/v3/93a7bbdd-7d0f-4b6d-86cc-4ae4ad25a3c5](https://run.mocky.io/v3/93a7bbdd-7d0f-4b6d-86cc-4ae4ad25a3c5)
 
+**URL**
+```
+https://run.mocky.io/v3/93a7bbdd-7d0f-4b6d-86cc-4ae4ad25a3c5
+```
 **Data**
 
 ```
